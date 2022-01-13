@@ -1,0 +1,628 @@
+{
+	"compiler": {
+		"version": "0.5.17+commit.d19bba13"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "rate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address payable",
+						"name": "wallet",
+						"type": "address"
+					},
+					{
+						"internalType": "contract IERC20",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "minBuy",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "maxCap",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "claimer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "TokensClaimed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "purchaser",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "beneficiary",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "TokensPurchased",
+				"type": "event"
+			},
+			{
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "beneficiary",
+						"type": "address"
+					}
+				],
+				"name": "buyTokens",
+				"outputs": [],
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "claimer",
+						"type": "address"
+					}
+				],
+				"name": "claimTokens",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "getCap",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "claimer",
+						"type": "address"
+					}
+				],
+				"name": "getClaimPerPeriod",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "claimer",
+						"type": "address"
+					}
+				],
+				"name": "getClaimPeriods",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "beneficiary",
+						"type": "address"
+					}
+				],
+				"name": "getContribution",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "getMinBuy",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "investor",
+						"type": "address"
+					}
+				],
+				"name": "getTokenAccrued",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "isOwner",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "rate",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "cap",
+						"type": "uint256"
+					}
+				],
+				"name": "setCap",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amt",
+						"type": "uint256"
+					}
+				],
+				"name": "setMinBuy",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "startSale",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "stopSale",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "token",
+				"outputs": [
+					{
+						"internalType": "contract IERC20",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "tokenAmountBought",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "tokenAmountClaimed",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "wallet",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "weiRaised",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "beneficiary",
+						"type": "address"
+					}
+				],
+				"name": "withdrawAllToken",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "FlutterCrowdsale is a base contract for managing a token crowdsale, allowing investors to purchase tokens with ether. This contract implements such functionality in its most fundamental form and can be extended to provide additional functionality and/or custom behavior. The external interface represents the basic interface for purchasing tokens, and conforms the base architecture for crowdsales. It is *not* intended to be modified / overridden. The internal interface conforms the extensible and modifiable surface of crowdsales. Override the methods to add functionality. Consider using 'super' where appropriate to concatenate behavior.",
+			"methods": {
+				"buyTokens(address)": {
+					"details": "low level token purchase ***DO NOT OVERRIDE*** This function has a non-reentrancy guard, so it shouldn't be called by another `nonReentrant` function.",
+					"params": {
+						"beneficiary": "Recipient of the token purchase"
+					}
+				},
+				"claimTokens(address)": {
+					"details": "Allow investors to claim accrued token."
+				},
+				"constructor": {
+					"details": "The rate is the conversion between wei and the smallest and indivisible token unit. So, if you are using a rate of 1 with a ERC20Detailed token with 3 decimals called TOK, 1 wei will give you 1 unit, or 0.001 TOK.",
+					"params": {
+						"rate": "Number of token units a buyer gets per wei",
+						"token": "Address of the token being sold",
+						"wallet": "Address where collected funds will be forwarded to"
+					}
+				},
+				"getCap()": {
+					"details": "Returns the maximum cap.",
+					"return": "Current maximum cap"
+				},
+				"getContribution(address)": {
+					"details": "Returns the amount contributed so far by a specific beneficiary.",
+					"params": {
+						"beneficiary": "Address of contributor"
+					},
+					"return": "Beneficiary contribution so far"
+				},
+				"getMinBuy()": {
+					"details": "Returns the minimum amount to buy.",
+					"return": "Current minimum amount to buy"
+				},
+				"isOwner()": {
+					"details": "Returns true if the caller is the current owner."
+				},
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"rate()": {
+					"return": "the number of token units a buyer gets per wei."
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner.      * NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+				},
+				"setCap(uint256)": {
+					"details": "Sets the maximum for every individual's contribution.",
+					"params": {
+						"cap": "Wei limit for individual contribution"
+					}
+				},
+				"setMinBuy(uint256)": {
+					"details": "Sets a specific beneficiary's maximum contribution.",
+					"params": {
+						"amt": "Wei minimum limit for individual contribution"
+					}
+				},
+				"startSale()": {
+					"details": "Contract owner to start sale."
+				},
+				"stopSale()": {
+					"details": "Contract owner to start sale."
+				},
+				"token()": {
+					"return": "the token being sold."
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				},
+				"wallet()": {
+					"return": "the address where funds are collected."
+				},
+				"weiRaised()": {
+					"return": "the amount of wei raised."
+				},
+				"withdrawAllToken(address)": {
+					"details": "Returns the amount contributed so far by a specific beneficiary.",
+					"params": {
+						"beneficiary": "Address of contributor"
+					},
+					"return": "Beneficiary contribution so far"
+				}
+			},
+			"title": "FlutterCrowdsale"
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/FlutterCrowdsale.sol": "FlutterCrowdsale"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/FlutterCrowdsale.sol": {
+			"keccak256": "0xa9215e42cff78ee1f9042a4b6aec3dd006615064ae659daa22ccfc2a17412a98",
+			"urls": [
+				"bzz-raw://880fb5b952c1b1bd914b64e34be84fb914ad997beba50555603600860fc297db",
+				"dweb:/ipfs/QmVxWcCzcuTwQ6greZohzUqngyDqvc25AiNRedwWkYcLEQ"
+			]
+		},
+		"contracts/helpers/Address.sol": {
+			"keccak256": "0x8c5942fe8431d01c0c65ad7132884f34beb3b70cd9f88b328f40d51cc03241b4",
+			"urls": [
+				"bzz-raw://e3d970a3485dc0a1e12c0a2c7e2e1748d2826d853758d79a920d2ccaf4b91fb9",
+				"dweb:/ipfs/QmPzrPAM58SxuKMKugfrgX39ssFfhmMgnyaGBomzotZoMM"
+			]
+		},
+		"contracts/helpers/Context.sol": {
+			"keccak256": "0x98d9c3f119eabc9384b14d85702d9a1249760fc32ae8cb295f1071a064c6733a",
+			"urls": [
+				"bzz-raw://a3405e6d7e177d0ef81858e81dea76264c9b71a8dda1efe3911df79f45fbb848",
+				"dweb:/ipfs/Qmf69RTdxy32UXNJPFQz8M8C6Shhf1i6B1NiYWzDA8FUnS"
+			]
+		},
+		"contracts/helpers/IERC20.sol": {
+			"keccak256": "0xd45135fede71fe4b2f06ccc22c459f880912785065a13f5ebf85ebe3d07d632e",
+			"urls": [
+				"bzz-raw://e38e11ed61a168499a2128f65c4248f9cb76a12fb0c9f2ae0e0e0ade46c5ba9f",
+				"dweb:/ipfs/QmdAEvzLRsCtT6Yp1ruyymfaQ4hDtQMmBFjYY9MB4YQSBm"
+			]
+		},
+		"contracts/helpers/Ownable.sol": {
+			"keccak256": "0x1b449bf2f43f6b431e325b59d02646ac0e2248dc2d2cb0e4e9dfba5cdbf7be1d",
+			"urls": [
+				"bzz-raw://4f82ca6ea0386f62389648b93cace66b60ba009c3de2bb30e46d00e03d97df65",
+				"dweb:/ipfs/QmS2GkPzxQdWoGoMvtcieYNAyqAW1N2ri1jSYFy5HF2ovv"
+			]
+		},
+		"contracts/helpers/ReentrancyGuard.sol": {
+			"keccak256": "0x6fd7859247f248ae1088e34616a9410509e1c609273344cdc3199ad8fc91e38c",
+			"urls": [
+				"bzz-raw://d0c4ff362d89b4713c5730853cd8bc561c9f0e0940a70cc493074c8e9e80f066",
+				"dweb:/ipfs/QmcAFphTnCcJvg572kaKjJ6gs4R2tiWqiqCuSfbaSeDrk5"
+			]
+		},
+		"contracts/helpers/SafeERC20.sol": {
+			"keccak256": "0xc1d2c662905b6ff4ca812bb1fe808881b827c21308ff919c6ed92b978cca7137",
+			"urls": [
+				"bzz-raw://38b36f043592b05b46a12b1389863ef35da161773fb181b59cedb128db0fad1a",
+				"dweb:/ipfs/QmVjaEEwayjd3oRcFeekWkfwxWTHH2H6cjPeciG9XgvPgp"
+			]
+		},
+		"contracts/helpers/SafeMath.sol": {
+			"keccak256": "0xeb295b448107f6adee6c0861eba7cd58983eeb1a2bf9cd24b3df9c75fe17db75",
+			"urls": [
+				"bzz-raw://781a662595af8ecda052135a27529293189c1cdf40bc5e2934a62b3bc2b327ea",
+				"dweb:/ipfs/QmNaGn5PyRCu3tfBu6mMwx3j2BHJiXWKiYGHSAu3au6P7S"
+			]
+		}
+	},
+	"version": 1
+}
